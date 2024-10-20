@@ -1,0 +1,114 @@
+.class public Lcq/r;
+.super Lcq/a;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lcq/a<",
+        "Lup/u;",
+        ">;"
+    }
+.end annotation
+
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
+
+# instance fields
+.field public final i:Lup/w;
+
+.field public final j:Lkq/d;
+
+
+# direct methods
+.method public constructor <init>(Leq/h;Lfq/w;Lup/w;Lgq/j;)V
+    .locals 0
+
+    invoke-direct {p0, p1, p2, p4}, Lcq/a;-><init>(Leq/h;Lfq/w;Lgq/j;)V
+
+    const-string p1, "Request factory"
+
+    invoke-static {p3, p1}, Lkq/a;->j(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object p1
+
+    check-cast p1, Lup/w;
+
+    iput-object p1, p0, Lcq/r;->i:Lup/w;
+
+    new-instance p1, Lkq/d;
+
+    const/16 p2, 0x80
+
+    invoke-direct {p1, p2}, Lkq/d;-><init>(I)V
+
+    iput-object p1, p0, Lcq/r;->j:Lkq/d;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public b(Leq/h;)Lup/u;
+    .locals 2
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;,
+            Lup/q;,
+            Lup/j0;
+        }
+    .end annotation
+
+    iget-object v0, p0, Lcq/r;->j:Lkq/d;
+
+    invoke-virtual {v0}, Lkq/d;->k()V
+
+    iget-object v0, p0, Lcq/r;->j:Lkq/d;
+
+    invoke-interface {p1, v0}, Leq/h;->b(Lkq/d;)I
+
+    move-result p1
+
+    const/4 v0, -0x1
+
+    if-eq p1, v0, :cond_0
+
+    new-instance p1, Lfq/x;
+
+    iget-object v0, p0, Lcq/r;->j:Lkq/d;
+
+    invoke-virtual {v0}, Lkq/d;->length()I
+
+    move-result v0
+
+    const/4 v1, 0x0
+
+    invoke-direct {p1, v1, v0}, Lfq/x;-><init>(II)V
+
+    iget-object v0, p0, Lcq/a;->d:Lfq/w;
+
+    iget-object v1, p0, Lcq/r;->j:Lkq/d;
+
+    invoke-interface {v0, v1, p1}, Lfq/w;->e(Lkq/d;Lfq/x;)Lup/n0;
+
+    move-result-object p1
+
+    iget-object p0, p0, Lcq/r;->i:Lup/w;
+
+    invoke-interface {p0, p1}, Lup/w;->b(Lup/n0;)Lup/v;
+
+    move-result-object p0
+
+    return-object p0
+
+    :cond_0
+    new-instance p0, Lup/a;
+
+    const-string p1, "Client closed connection"
+
+    invoke-direct {p0, p1}, Lup/a;-><init>(Ljava/lang/String;)V
+
+    throw p0
+.end method
